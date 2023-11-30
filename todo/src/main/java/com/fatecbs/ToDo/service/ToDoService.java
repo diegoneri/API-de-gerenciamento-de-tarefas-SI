@@ -1,58 +1,87 @@
 package com.fatecbs.ToDo.service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fatecbs.ToDo.model.ToDo;
-import com.fatecbs.ToDo.model.ToDo.Status;
+import com.fatecbs.ToDo.repository.ToDoRepository;
 
 @Service
-public class ToDoService {
-    private final List<ToDo> todos = new ArrayList<>();
-    private Long nextId = 1L;
+public class ToDoService implements ServiceInterface<ToDo> {
+	@Autowired
+	private ToDoRepository repository;
+//    private final List<ToDo> todos = new ArrayList<>();
+	 public ToDoService() {}
+	  @Override
+	  public ToDo create(ToDo obj) {
+	     repository.save(obj);
+	     return obj;
+	  }
 
-    public List<ToDo> getAllTodos() {
-        return todos;
+    @Override
+    public List<ToDo> findAll() {
+        return repository.findAll();
     }
 
-    public Optional<ToDo> getTodoById(Long id) {
-        return todos.stream()
-                .filter(todo -> todo.getId().equals(id))
-                .findFirst();
-    }
+    @Override
+    public boolean delete(Long id) {
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
+            return true;
+         }
+         return false;
+      }
 
-    public ToDo createTodo(ToDo newTodo) {
-        newTodo.setId(nextId++);
-        todos.add(newTodo);
-        return newTodo;
-    }
 
-    public boolean deleteTodoById(Long id) {
-        return todos.removeIf(todo -> todo.getId().equals(id));
+	@Override
+    public boolean update(Long id, ToDo updatedTodo) {
+        if (repository.existsById(id)) {
+            updatedTodo.setId(id);
+            repository.save(updatedTodo);
+            return true;
+         }
+         return false;
     }
+	
+	@Override
+    public boolean patch(Long id, ToDo updates) {
+        Optional<ToDo> optionalToDo = repository.findById(id);
 
-    public Optional<ToDo> updateTodoById(Long id, ToDo updatedTodo) {
-        for (int i = 0; i < todos.size(); i++) {
-            ToDo todo = todos.get(i);
-            if (todo.getId().equals(id)) {
-                updatedTodo.setId(id);
-                todos.set(i, updatedTodo);
-                return Optional.of(updatedTodo);
+        if (optionalToDo.isPresent()) {
+            ToDo toDoToUpdate = optionalToDo.get();
+
+            if (updates.getTitle() != null) {
+                toDoToUpdate.setTitle(updates.getTitle());
             }
+
+            if (updates.getDescription() != null) {
+                toDoToUpdate.setDescription(updates.getDescription());
+            }
+
+            if (updates.getStatus() != null) {
+                toDoToUpdate.setStatus(updates.getStatus());
+            }
+
+            if (updates.getDueDate() != null) {
+                toDoToUpdate.setDueDate(updates.getDueDate());
+            }
+
+            if (updates.getPriority() != null) {
+                toDoToUpdate.setPriority(updates.getPriority());
+            }
+
+            repository.save(toDoToUpdate);
+            return true;
         }
-        return Optional.empty();
+
+        return false;
     }
 
-    public Optional<ToDo> patchTodoStatus(Long id, Status newStatus) {
-        for (ToDo todo : todos) {
-            if (todo.getId().equals(id)) {
-                todo.setStatus(newStatus);
-                return Optional.of(todo);
-            }
-        }
-        return Optional.empty();
+    @Override
+    public ToDo findById(Long id) {
+      Optional<ToDo> obj = repository.findById(id);
+      return obj.orElse(null);
     }
 }

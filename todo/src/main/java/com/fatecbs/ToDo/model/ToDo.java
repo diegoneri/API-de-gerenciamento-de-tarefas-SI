@@ -2,13 +2,30 @@ package com.fatecbs.ToDo.model;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+
+@Entity
+@Table(name="tb_todo")
 public class ToDo {
 	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(name="nm_titulo") 
     private String title;
+	@Column(name="ds_descricao") 
     private String description;
+	@Column(name="nm_status") 
     private Status status;
+	@Column(name="dt_tarefa") 
     private LocalDate dueDate;
+	@Column(name="nm_prioridade") 
     private Priority priority;
     
 	public enum Status {

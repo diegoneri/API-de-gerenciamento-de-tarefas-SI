@@ -1,8 +1,9 @@
 package com.fatecbs.ToDo.controller;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
+import java.net.URI;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,74 +14,63 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.fatecbs.ToDo.model.ToDo;
-import com.fatecbs.ToDo.model.ToDo.Status;
+import com.fatecbs.ToDo.service.ToDoService;
 
 @RestController
 @RequestMapping("/todos")
 
-
-public class ToDoController {
-    private final List<ToDo> todos = new ArrayList<>();
-    private Long nextId = 1L;
+public class ToDoController implements ControllerInterface<ToDo> {
+    @Autowired
+    private ToDoService service;
 
     @GetMapping
-    public List<ToDo> getAllTodos() {
-        return todos;
+    public ResponseEntity<List<ToDo>> getAll() {
+        return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping("/{id}")
-    public ToDo getTodoById(@PathVariable Long id) {
-        return todos.stream()
-                .filter(todo -> todo.getId().equals(id))
-                .findFirst()
-                .orElse(null); 
+    public ResponseEntity<?> findById(@PathVariable Long id) {
+        ToDo _ToDo = service.findById(id);
+        if (_ToDo != null)
+            return ResponseEntity.ok(_ToDo);
+        return ResponseEntity.notFound().build();
     }
 
     @PostMapping
-    public ToDo createTodo(@RequestBody ToDo newTodo) {
-        newTodo.setId(nextId++);
-        todos.add(newTodo);
-        return newTodo;
+    public ResponseEntity<ToDo> post(@RequestBody ToDo toDo) {
+        service.create(toDo);
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest().path("/{id}")
+                .buildAndExpand(toDo.getId())
+                .toUri();
+        return ResponseEntity.created(location).body(toDo);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTodo(@PathVariable Long id) {
-        todos.removeIf(todo -> todo.getId().equals(id));
-    }
-
-    @PutMapping("/{id}")
-    public ToDo updateTodo(@PathVariable Long id, @RequestBody ToDo updatedTodo) {
-        for (int i = 0; i < todos.size(); i++) {
-            ToDo todo = todos.get(i);
-            if (todo.getId().equals(id)) {
-                updatedTodo.setId(id);
-                todos.set(i, updatedTodo);
-                return updatedTodo;
-            }
-        }
-        return null; 
-    }
-
-    @PatchMapping("/{id}")
-    public ResponseEntity<ToDo> patchTodoStatus(@PathVariable Long id, @RequestBody Map<String, String> requestBody) {
-        for (ToDo todo : todos) {
-            if (todo.getId().equals(id)) {
-                String newStatusString = requestBody.get("status");
-                if (newStatusString != null) {
-                    try {
-                        Status newStatus = Status.valueOf(newStatusString.toUpperCase()); 
-                        todo.setStatus(newStatus);
-                        return ResponseEntity.ok(todo);
-                    } catch (IllegalArgumentException e) {
-                        return ResponseEntity.badRequest().build();
-                    }
-                } else {      
-                    return ResponseEntity.badRequest().build();
-                }
-            }
+    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
+        if (service.delete(id)) {
+            return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> put(@PathVariable Long id, @RequestBody ToDo updatedTodo) {
+        if (service.update(id, updatedTodo)) {
+            return ResponseEntity.ok(updatedTodo);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<ToDo> patch(@PathVariable Long id, @RequestBody ToDo updates) {
+        if (service.patch(id, updates)) {
+            return ResponseEntity.ok(service.findById(id));
+        }
+        return ResponseEntity.notFound().build();
+    }
+
 }
