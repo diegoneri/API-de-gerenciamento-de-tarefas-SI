@@ -26,8 +26,11 @@
 		"ghcr.io/devcontainers-contrib/features/mysql-homebrew:1": {
 			"version": "latest"
 		}
-	}
+	},
+	"postCreateCommand": "mysqld",
+	"postStartCommand": "mysql -u root < sql/userFatec.sql"
 
+	
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 

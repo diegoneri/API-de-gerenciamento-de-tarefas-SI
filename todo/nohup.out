@@ -1,0 +1,108 @@
+
+> todo@0.1.0 start
+> react-scripts start
+
+2023-12-01T22:23:06.939763Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+2023-12-01T22:23:07.427288Z 0 [System] [MY-010116] [Server] /home/linuxbrew/.linuxbrew/Cellar/mysql/8.2.0_1/bin/mysqld (mysqld 8.2.0) starting as process 1014
+2023-12-01T22:23:07.707173Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2023-12-01T22:23:11.610706Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2023-12-01T22:23:12.367725Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2023-12-01T22:23:12.367886Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2023-12-01T22:23:12.395177Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '127.0.0.1' port: 33060, socket: /tmp/mysqlx.sock
+2023-12-01T22:23:12.395361Z 0 [System] [MY-010931] [Server] /home/linuxbrew/.linuxbrew/Cellar/mysql/8.2.0_1/bin/mysqld: ready for connections. Version: '8.2.0'  socket: '/tmp/mysql.sock'  port: 3306  Homebrew.
+(node:1050) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:1050) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+Compiled successfully!
+
+You can now view todo in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://172.16.5.4:3000
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+
+webpack compiled successfully
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.
+
+> todo@0.1.0 start
+> react-scripts start
+
+2023-12-01T22:25:00.103800Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+2023-12-01T22:25:00.332964Z 0 [System] [MY-010116] [Server] /home/linuxbrew/.linuxbrew/Cellar/mysql/8.2.0_1/bin/mysqld (mysqld 8.2.0) starting as process 907
+2023-12-01T22:25:00.398621Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2023-12-01T22:25:01.948462Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2023-12-01T22:25:02.957741Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2023-12-01T22:25:02.957940Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2023-12-01T22:25:03.038829Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '127.0.0.1' port: 33060, socket: /tmp/mysqlx.sock
+2023-12-01T22:25:03.039299Z 0 [System] [MY-010931] [Server] /home/linuxbrew/.linuxbrew/Cellar/mysql/8.2.0_1/bin/mysqld: ready for connections. Version: '8.2.0'  socket: '/tmp/mysql.sock'  port: 3306  Homebrew.
+(node:947) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:947) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+Compiled successfully!
+
+You can now view todo in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://172.16.5.4:3000
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+
+webpack compiled successfully
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.
+
+> todo@0.1.0 start
+> react-scripts start
+
+(node:969) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:969) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+Compiled successfully!
+
+You can now view todo in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://172.16.5.4:3000
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+
+webpack compiled successfully
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.
+
+> todo@0.1.0 start
+> react-scripts start
+
+(node:935) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:935) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+Compiled successfully!
+
+You can now view todo in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://172.16.5.4:3000
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+
+webpack compiled successfully
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.

@@ -14,4 +14,6 @@ public interface ServiceInterface<T> {
 	boolean delete(Long id);
 	
 	boolean patch(Long id, T obj);
+	
+	boolean patchStatus(Long id, T obj);
 }

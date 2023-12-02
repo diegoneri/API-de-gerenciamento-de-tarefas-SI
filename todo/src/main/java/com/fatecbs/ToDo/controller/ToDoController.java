@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -68,6 +69,16 @@ public class ToDoController implements ControllerInterface<ToDo> {
     @PatchMapping("/{id}")
     public ResponseEntity<ToDo> patch(@PathVariable Long id, @RequestBody ToDo updates) {
         if (service.patch(id, updates)) {
+            return ResponseEntity.ok(service.findById(id));
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<ToDo> patchStatus(@PathVariable Long id, @RequestParam ToDo.Status status) {
+        var statusTodo = new ToDo();
+        statusTodo.setStatus(status);
+        if (service.patchStatus(id, statusTodo)) {
             return ResponseEntity.ok(service.findById(id));
         }
         return ResponseEntity.notFound().build();

@@ -80,6 +80,24 @@ public class ToDoService implements ServiceInterface<ToDo> {
     }
 
     @Override
+    public boolean patchStatus(Long id, ToDo status) {
+        Optional<ToDo> optionalToDo = repository.findById(id);
+
+        if (optionalToDo.isPresent()) {
+            ToDo toDoToUpdate = optionalToDo.get();
+
+            if (status != null) {
+                toDoToUpdate.setStatus(status.getStatus());
+            }
+
+            repository.save(toDoToUpdate);
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
     public ToDo findById(Long id) {
       Optional<ToDo> obj = repository.findById(id);
       return obj.orElse(null);

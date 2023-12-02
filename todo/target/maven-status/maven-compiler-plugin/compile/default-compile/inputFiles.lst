@@ -1,0 +1,8 @@
+/workspaces/API-de-gerenciamento-de-tarefas-SI/todo/src/main/java/com/fatecbs/ToDo/ToDoApplication.java
+/workspaces/API-de-gerenciamento-de-tarefas-SI/todo/src/main/java/com/fatecbs/ToDo/controller/ControllerInterface.java
+/workspaces/API-de-gerenciamento-de-tarefas-SI/todo/src/main/java/com/fatecbs/ToDo/model/ToDo.java
+/workspaces/API-de-gerenciamento-de-tarefas-SI/todo/src/main/java/com/fatecbs/ToDo/controller/ToDoController.java
+/workspaces/API-de-gerenciamento-de-tarefas-SI/todo/src/main/java/com/fatecbs/ToDo/service/ServiceInterface.java
+/workspaces/API-de-gerenciamento-de-tarefas-SI/todo/src/main/java/com/fatecbs/ToDo/config/SwaggerConfig.java
+/workspaces/API-de-gerenciamento-de-tarefas-SI/todo/src/main/java/com/fatecbs/ToDo/service/ToDoService.java
+/workspaces/API-de-gerenciamento-de-tarefas-SI/todo/src/main/java/com/fatecbs/ToDo/repository/ToDoRepository.java
